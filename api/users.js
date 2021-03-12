@@ -37,6 +37,8 @@ usersRouter.post('/login', async (req, res, next) => {
 
     if (user && user.password == password) {
       // create token & return to user
+
+      
       res.send({ message: "you're logged in!" });
     } else {
       next({ 
@@ -83,7 +85,8 @@ usersRouter.post('/register', async (req, res, next) => {
       token 
     });
   } catch ({ name, message }) {
-    next({ name, message })
+    next({ name: 'RegisterError', 
+    message: 'There was an error creating your account.' })
   } 
 });
 
